@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:14:42 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/11 15:17:57 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:00:12 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,16 @@
 
 void    exe_cmd(std::string cmd , PhoneBook &pb)
 {
-    if(cmd == "ADD" || cmd == "add")
+    if(cmd == "ADD")
         pb.add();    
-    else if(cmd == "SEARCH" || cmd = "search")
+    else if(cmd == "SEARCH")
         pb.search();  
-    else if(cmd == "EXIT" || cmd = "exit")
+    else if(cmd == "EXIT")
     {
         std::cout << "Exiting phonebook , data will be lost forever" << std::endl;
         exit(0);        
     }
-    if (cmd != "ADD" && cmd != "SEARCH" && cmd != "add" && cmd != "search") 
+    if (cmd != "ADD" && cmd != "SEARCH") 
     {
          std::cout << "The command you entered is invalid " << std::endl;
     }

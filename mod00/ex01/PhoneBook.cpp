@@ -6,11 +6,12 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:39:06 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/11 15:16:22 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/11 17:54:04 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include <string>
 
 /********** - Constructor and destructor - **********/
 
@@ -35,13 +36,13 @@ void    PhoneBook::add(void)
         if(std::cin.bad())
             exit(0);
         std::cout << "Enter contact infos starting with the first name" << std::endl ;
-        std::cin >> fname;
+        std::getline(std::cin, fname);
         std::cout << "Enter " << fname << "'s last name" << std::endl ;
-        std::cin >> lname;
+        std::getline(std::cin, lname);
         std::cout << "Enter " << fname << "'s nickname" << std::endl ;
-        std::cin >> nname;
+        std::getline(std::cin, nname);
         std::cout << "Enter " << fname << "'s darkest secret" << std::endl ;
-        std::cin >> secret;
+        std::getline(std::cin, secret);
         std::cout << "Enter " << fname << "'s phone number" << std::endl ;
         std::cin >> num;
         this->_contacts[this->_index ].set_infos(fname, lname, nname, secret, num);
@@ -51,6 +52,7 @@ void    PhoneBook::add(void)
     if (_index == 8)
         this->_index = 0;
 }
+
 
 void    PhoneBook::display_contact()
 {
