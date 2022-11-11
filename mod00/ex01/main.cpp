@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/30 16:14:42 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/10 15:44:49 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:17:57 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,33 +15,33 @@
 
 void    exe_cmd(std::string cmd , PhoneBook &pb)
 {
-    if(cmd == "ADD")
+    if(cmd == "ADD" || cmd == "add")
         pb.add();    
-    else if(cmd == "SEARCH")
+    else if(cmd == "SEARCH" || cmd = "search")
         pb.search();  
-    else if(cmd == "EXIT")
+    else if(cmd == "EXIT" || cmd = "exit")
     {
         std::cout << "Exiting phonebook , data will be lost forever" << std::endl;
         exit(0);        
     }
-    else
+    if (cmd != "ADD" && cmd != "SEARCH" && cmd != "add" && cmd != "search") 
     {
-         std::cout << "The command you entered is invalid" << std::endl;
+         std::cout << "The command you entered is invalid " << std::endl;
     }
 }
 
 int main()
 {
     PhoneBook pb;
-    std::string command;
+    std::string command = "test";
     
     std::cout << "    -- /*Welcome to PhoneBook /*--   " <<std::endl ;
     std::cout << "Enter the command you want to execute :" <<std::endl ;
    
     while(42)
     {
-         std::cout << "ADD | SEARCH | EXIT : \n" ;
-        std::getline(std::cin, command);
+        if (!command.empty())
+            std::cout << "ADD | SEARCH | EXIT : " << std::endl;
         if (std::cin.eof())
 		{
 			std::cout << std::endl;
@@ -49,7 +49,9 @@ int main()
 		}
         if(std::cin.bad())
             exit(0);
-        exe_cmd(command , pb);
+        std::getline(std::cin, command);
+        if (!command.empty())
+            exe_cmd(command , pb);
     }
     return 0;
 }

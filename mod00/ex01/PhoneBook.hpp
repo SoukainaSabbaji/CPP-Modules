@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/23 15:34:16 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/10 16:14:55 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:06:01 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ class PhoneBook
     private:
         Contact     _contacts[8];
         int         _index;
-        // int         _contacts_count;
+        int         _contacts_count;
     public:
         PhoneBook(void);
         ~PhoneBook(void);

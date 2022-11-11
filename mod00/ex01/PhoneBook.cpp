@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:39:06 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/11 13:25:01 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/11 15:16:22 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 PhoneBook::PhoneBook(void)
 {
     this->_index = 0;
+    this->_contacts_count = 0;
 }
 
 PhoneBook::~PhoneBook(void)
@@ -56,21 +57,22 @@ void    PhoneBook::display_contact()
     std::string index;
     int         nindex;
     
+    nindex = 0;
     std::cout << "\n\nEnter the index of the entry to display" << std::endl;
     std::cin >> index;
     if (index.length() > 1 || !index.find_first_not_of("0123456789"))
     {
-        std::cout << "the index you emtered is invalid" << std::endl;
+        std::cout << "the index you entered is invalid" << std::endl;
         return ;
     }
     else
     {
         nindex = std::atoi(index.c_str());
-        if (nindex >= 0 && nindex < 8)
+        if (nindex >= 0 && nindex < this->_contacts_count)
             this->_contacts[nindex].display();
         else 
         {
-            std::cout << "the index you emtered is invalid" << std::endl;
+            std::cout << "the index you entered is invalid" << std::endl;
             return ;
         }    
     }
@@ -106,6 +108,7 @@ void    PhoneBook::search(void)
         std::cout << std::setw(10)<< create_str(str) << "|";
         str = this->_contacts[i].get_nname();
         std::cout << std::setw(10) << create_str(str) << "|" << std::endl;
+        this->_contacts_count++;
         i++;
     }
     std::cout << " ___________________________________________ " << std::endl;
