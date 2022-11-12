@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 16:30:40 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/12 16:49:57 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:52:00 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,11 @@ Zombie  *zombieHorde(int n, std::string name)
     int i;
     
     i = 0;
+    if (n < 0)
+    {
+        std::cout << "the number you entered is invalid" << std::endl;
+        return (NULL);
+    }
     while (i < n)
     {
         horde[i].setName(name);
