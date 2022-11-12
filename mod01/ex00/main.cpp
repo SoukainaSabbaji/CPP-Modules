@@ -1,18 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   newZombie.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/12 14:26:54 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/12 14:27:16 by ssabbaji         ###   ########.fr       */
+/*   Created: 2022/11/12 14:28:11 by ssabbaji          #+#    #+#             */
+/*   Updated: 2022/11/12 16:09:29 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-Zombie *Zombie::newZombie(std::string name)
+Zombie  *newZombie(std::string name);
+void    randomChump(std::string name); 
+
+int main()
 {
-    return (new Zombie(name));
+   Zombie *creeper = newZombie("Creeper");
+    randomChump("Rottenberg");
+   
+    creeper->announce();
+    
+    delete creeper;
 }

@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 13:49:29 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/12 14:27:59 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/12 17:12:01 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,14 @@
 
 /********** - Constructor and destructor - **********/
 
-Zombie::Zombie(std::string name)
+Zombie::Zombie()
 {
-    this->_name = name;
-    std::cout << "Zombie created" << std::endl;       
+    std::cout << "a zombie is born :D" << std::endl;       
 }
 
 Zombie::~Zombie(void)
 {
-    std::cout << "Zombie sent to the shadow realm" << std::endl;
+    std::cout << this->_name << " sent to the shadow realm" << std::endl;
 }
 
 /********** - Announce function- **********/
@@ -30,4 +29,11 @@ Zombie::~Zombie(void)
 void    Zombie::announce(void)
 {
     std::cout << this->_name << ": BraiiiiiiinnnzzzZ..." << std::endl;
+}
+
+/********** - Setter func - **********/
+
+void    Zombie::setName(std::string name)
+{
+    this->_name = name;
 }
