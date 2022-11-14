@@ -1,0 +1,20 @@
+SRCS			= main.cpp
+OBJS			= $(SRCS:.cpp=.o)
+
+CXXFLAGS		= -Wall -Wextra -Werror -std=c++98 
+
+NAME			= replace
+
+all:			$(NAME)
+
+$(NAME):		$(OBJS) 
+				c++ $(CXXFLAGS) -o $(NAME) $(OBJS) 
+
+clean:
+				rm -f $(OBJS)
+
+fclean:			clean
+				rm -f $(NAME)
+
+re:				fclean $(NAME)
+
