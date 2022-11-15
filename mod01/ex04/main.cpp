@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:47:29 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/14 14:54:36 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/15 14:14:55 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,13 @@ void replace(char **argv, std::string rep)
      o_file = argv[1];
      r_file = o_file.append(".replace");
      outfile.open(r_file);
-     if (outfile.fail())
+     if (!outfile)
      {
-          std::cout << "lel" << std::endl;
-	     exit (1);
+          std::cout << "Error in creating file" << std::endl;
      }
 	for (int i = 0; i < (int)rep.size(); i++)
 	{
-		pos = rep.find(argv[2], i);
+          pos = rep.find(argv[2], i);
 		if (pos != -1 && pos == i)
 		{
 			outfile << argv[3];
@@ -65,8 +64,9 @@ int main(int argc, char **argv)
                rep.append(str);
                rep.append("\n");
           }
-          std::cout << str << std::endl;
+          // std::cout << rep << std::endl;
           infile.close();
+          replace(argv, rep);
      }
      else 
           std::cout << "your file isnt open" << std::endl;
