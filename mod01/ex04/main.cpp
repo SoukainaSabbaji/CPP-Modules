@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:47:29 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/15 14:14:55 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/15 16:17:21 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,14 @@ void replace(char **argv, std::string rep)
      if (!outfile)
      {
           std::cout << "Error in creating file" << std::endl;
+          exit (1);
      }
 	for (int i = 0; i < (int)rep.size(); i++)
 	{
+          if (std::string(argv[2]).empty())
+               break;
           pos = rep.find(argv[2], i);
-		if (pos != -1 && pos == i)
+		if (pos == i && pos != -1)
 		{
 			outfile << argv[3];
 			i += std::string(argv[2]).size() - 1;
@@ -64,13 +67,13 @@ int main(int argc, char **argv)
                rep.append(str);
                rep.append("\n");
           }
-          // std::cout << rep << std::endl;
           infile.close();
           replace(argv, rep);
      }
-     else 
+     else
+     {
           std::cout << "your file isnt open" << std::endl;
+          return (1);
+     }
+     return (0);
 }
-// the str to look for is empty
-// or if str doesnt exist at all
-//  ila 3tak lkhwa ghtexiti
