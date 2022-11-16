@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/14 16:24:46 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/14 16:29:04 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/16 13:17:38 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 #define HARL_HPP
 
 #include <iostream>
+
+# define RED "\001\033[1;91m\002"
+# define DFL "\001\033[0;39m\002"
 
 class Harl
 {
