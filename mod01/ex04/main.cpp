@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 14:47:29 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/15 16:17:21 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/17 10:49:45 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int main(int argc, char **argv)
      {
           while (!infile.eof() && getline(infile, str))
           {
+               if (infile.bad())
+                    exit(1);
                rep.append(str);
                rep.append("\n");
           }

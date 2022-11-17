@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 18:14:21 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/14 14:29:15 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/16 14:34:56 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ Weapon::~Weapon()
 
 const std::string &Weapon::getType(void)
 {
-    return (this->_type);
+    
+        return (this->_type);
 }
 
 void    Weapon::setType(std::string newType)
