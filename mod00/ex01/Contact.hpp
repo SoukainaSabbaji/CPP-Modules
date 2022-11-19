@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:42:49 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/10 14:41:05 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:54:48 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ class Contact
         std::string _LastName;
         std::string _Nickname;
         std::string _Secret;
-        int         _PhoneNum;
+        std::string _PhoneNum;
     public:
         Contact();
         ~Contact();
@@ -31,7 +31,7 @@ class Contact
         std::string     get_lname() const;
         std::string     get_nname() const;
         std::string     get_secret() const;
-        int             get_num() const;
+        std::string     get_num() const;
         void            print_contact(Contact contact);
         void            display(void);
 };

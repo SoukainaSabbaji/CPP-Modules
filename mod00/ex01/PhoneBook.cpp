@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 15:39:06 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/11 17:54:04 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:53:55 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void    PhoneBook::add(void)
     }
     std::cout << "Contact added to PhoneBook" << std::endl;
     this->_index++;
+    this->_contacts_count = this->_index;
     if (_index == 8)
         this->_index = 0;
 }
@@ -110,7 +111,6 @@ void    PhoneBook::search(void)
         std::cout << std::setw(10)<< create_str(str) << "|";
         str = this->_contacts[i].get_nname();
         std::cout << std::setw(10) << create_str(str) << "|" << std::endl;
-        this->_contacts_count++;
         i++;
     }
     std::cout << " ___________________________________________ " << std::endl;

@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/31 17:42:46 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/08 16:42:11 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/19 17:54:32 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ std::string Contact::get_secret() const
 {
     return  _Secret;  
 }
-int Contact::get_num() const
+std::string Contact::get_num() const
 {
     return  _PhoneNum;  
 }
@@ -52,8 +52,8 @@ void    Contact::set_infos(std::string fname, std::string lname,std::string nnam
     else
         _Nickname ="bingus";
     _Secret = secret;
-     if(num.find_first_not_of("0123456789"))
-     _PhoneNum = atoi(num.c_str());
+    if(num.find_first_not_of("0123456789"))
+        _PhoneNum = num;
 }
 
 /********** - Constructor and destructor - **********/
