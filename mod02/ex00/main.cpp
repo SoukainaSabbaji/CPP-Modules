@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/21 11:43:53 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/22 16:25:03 by ssabbaji         ###   ########.fr       */
+/*   Created: 2022/11/22 16:23:41 by ssabbaji          #+#    #+#             */
+/*   Updated: 2022/11/22 16:24:15 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// 5346
-
 #include <iostream>
+#include "Fixed.hpp"
 
-class Fixed
+int main(void)
 {
-    private:
-        int                 _fpVal;
-        static const int    _fbNum = 8;
-    public:
-        Fixed(); //default constructor
-        ~Fixed(); //destructor
-        Fixed(const Fixed &Fixed); //copy constructor
-        Fixed &operator=(Fixed const &other); //copy assignment operator overload
-        int     getRawBits(void) const;
-        void    setRawBits(int const raw);    
-};
+    Fixed a;
+    Fixed b(a);
+    Fixed c;
+    c = b;
+    std::cout << a.getRawBits() << std::endl;
+    std::cout << b.getRawBits() << std::endl;
+    std::cout << c.getRawBits() << std::endl;
+    return (0);
+}
