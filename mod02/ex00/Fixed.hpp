@@ -6,11 +6,13 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:43:53 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/22 16:25:03 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:43:19 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 // 5346
+#ifndef FIXED_HPP
+#define FIXED_HPP
 
 #include <iostream>
 
@@ -22,8 +24,10 @@ class Fixed
     public:
         Fixed(); //default constructor
         ~Fixed(); //destructor
-        Fixed(const Fixed &Fixed); //copy constructor
-        Fixed &operator=(Fixed const &other); //copy assignment operator overload
+        Fixed(const Fixed &obj); //copy constructor
+        Fixed &operator=(const Fixed &other); //copy assignment operator overload
         int     getRawBits(void) const;
         void    setRawBits(int const raw);    
 };
+
+#endif

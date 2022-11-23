@@ -6,37 +6,39 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:43:50 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/22 16:26:42 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/11/23 11:55:36 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
 
 /********** - Constructors , copy assignment op and destructor - **********/
-
-Fixed::Fixed(const Fixed &Fixed)
-{
-    this->_fpVal = Fixed._fpVal;
-    std::cout << "Copy constructor called" << std::endl;
-}
-
 Fixed::Fixed()
 {
     this->_fpVal = 0;
     std::cout << "Default constructor called" << std::endl;
 }
 
-Fixed::~Fixed()
+Fixed::Fixed(const Fixed &Fixed)
 {
-    std::cout << "Destructor called" << std::endl;
+    std::cout << "Copy constructor called" << std::endl;
+   *this = Fixed;
 }
 
 Fixed& Fixed::operator=(Fixed const &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    this->_fpVal = other._fpVal;
+    if (this == &other)
+        return (*this);
+   this->_fpVal = other.getRawBits();
     return *this;
 } 
+
+Fixed::~Fixed()
+{
+    std::cout << "Destructor called" << std::endl;
+}
+
 /********** - Raw bits getter and setter - **********/
 
 int Fixed::getRawBits(void) const
@@ -47,5 +49,6 @@ int Fixed::getRawBits(void) const
 
 void Fixed::setRawBits(int const raw)
 {
-    this->_fpVal = raw;    
+    std::cout << "setRawBits member function called" << std::endl;
+    this->_fpVal = raw << this->_fbNum;    
 }
