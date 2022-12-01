@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:30:57 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/01 14:53:01 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/01 14:08:32 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed::Fixed(const Fixed &Fixed)
 Fixed& Fixed::operator=(Fixed const &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    this->_fpVal = other.getFp();
+   this->_fpVal = other.getRb();
     return *this;
 } 
 
@@ -39,9 +39,9 @@ Fixed::~Fixed()
 
 /********** - Raw bits getter and setter - **********/
 
-int Fixed::getFp(void) const
+int Fixed::getRb(void) const
 {
-    return this->_fpVal;
+    return this->_fbNum;
 }
 
 int Fixed::getRawBits(void) const
@@ -58,23 +58,24 @@ void Fixed::setRawBits(int const raw)
 
 /********** - added constructors and member funcs - **********/
 
-Fixed::Fixed(const int num)
+Fixed::Fixed(const int num) 
 {
     std::cout << "Int constructor called" << std::endl;
-    this->_fpVal = num << this->_fbNum;
+    this->_fpVal = num * (1 << this->_fbNum);
 }
 
 Fixed::Fixed(const float num)
 {
     std::cout << "Float constructor called" << std::endl;
-    this->_fpVal = roundf(num * (1 << this->_fbNum));
+    this->_fpVal = roundf(num * (1 << this->_fpVal));
+    // this->_fpVal = num * (1 << this->_fbNum);
 }
 
 /********** - conversion functions - **********/
 
 float   Fixed::toFloat(void) const
 {
-    return (this->_fpVal / (float)(1 << this->_fbNum));    
+    return ((float)this->_fpVal / (1 << this->_fbNum));  
 }
     
 int     Fixed::toInt(void) const
@@ -82,9 +83,9 @@ int     Fixed::toInt(void) const
     return (this->_fpVal / (1 << this->_fbNum));
 }
 
-std::ostream &operator<<(std::ostream &o, Fixed const &rv)
+std::ostream &operator<<(std::ostream &o, Fixed const &rhs)
 {
-    o << rv.toFloat();
+    o << rhs.toFloat();
     return o;
 }
 

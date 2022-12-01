@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 11:43:50 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/11/23 11:55:36 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/01 13:51:47 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,7 @@ Fixed::Fixed(const Fixed &Fixed)
 Fixed& Fixed::operator=(Fixed const &other)
 {
     std::cout << "Copy assignment operator called" << std::endl;
-    if (this == &other)
-        return (*this);
-   this->_fpVal = other.getRawBits();
+   this->_fpVal = other.getRb();
     return *this;
 } 
 
@@ -40,6 +38,7 @@ Fixed::~Fixed()
 }
 
 /********** - Raw bits getter and setter - **********/
+
 
 int Fixed::getRawBits(void) const
 {
