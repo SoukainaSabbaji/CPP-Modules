@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:30:57 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/01 14:08:32 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/03 18:29:54 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ Fixed::Fixed(const float num)
 {
     std::cout << "Float constructor called" << std::endl;
     this->_fpVal = roundf(num * (1 << this->_fpVal));
-    // this->_fpVal = num * (1 << this->_fbNum);
 }
 
 /********** - conversion functions - **********/
@@ -89,3 +88,141 @@ std::ostream &operator<<(std::ostream &o, Fixed const &rhs)
     return o;
 }
 
+/********** - overloading operators functions - **********/
+
+bool    Fixed::operator>(const Fixed &other)
+{
+    if (this->_fpVal > other.getRawBits())
+        return true;
+    else
+        return false;    
+}
+
+bool    Fixed::operator<(const Fixed &other)
+{
+    if (this->_fpVal < other.getRawBits())
+        return true;
+    else
+        return false;    
+}
+
+bool    Fixed::operator<=(const Fixed &other)
+{
+    if (this->_fpVal <= other.getRawBits())
+        return true;
+    else
+        return false;    
+}
+
+bool    Fixed::operator>=(const Fixed &other)
+{
+    if (this->_fpVal >= other.getRawBits())
+        return true;
+    else
+        return false;     
+}
+
+bool    Fixed::operator==(const Fixed &other)
+{
+    if (this->_fpVal == other.getRawBits())
+        return true;
+    else
+        return false;
+}
+
+bool    Fixed::operator!=(const Fixed &other)
+{
+    if (this->_fpVal != other.getRawBits())
+        return true;
+    else    
+        return false;
+}
+/********** - overloading arithmetic operators functions - **********/
+
+
+//addition operator overloading , adds 2 fixed numbers to each other
+Fixed  Fixed::operator+(const Fixed &other)
+{
+    return (this->_fpVal + other.getRawBits()); 
+}
+
+Fixed  Fixed::operator-(const Fixed &other)
+{
+    return (this->_fpVal - other.getRawBits());
+}
+
+Fixed  Fixed::operator*(const Fixed &other)
+{
+    return (this->toFloat() * other.toFloat());
+}
+
+Fixed  Fixed::operator/(const Fixed &other)
+{
+    return ((this->_fpVal / other.getRawBits()) >> this->_fbNum);
+}
+
+//postfix increment operator overloading
+Fixed  Fixed::operator++(int)
+{
+    Fixed tmp(*this);
+    
+    this->_fpVal++;
+    return tmp;
+}
+
+//pre-increment operator overloading
+Fixed  &Fixed::operator++()
+{
+    this->_fpVal++;
+    return *this;
+}
+
+//postfix decrement operator overloading
+Fixed  Fixed::operator--(int)
+{
+    Fixed tmp(*this);
+    
+    this->_fpVal--;
+    return tmp;
+}
+
+//pre-decrement operator overloading
+Fixed  &Fixed::operator--()
+{
+    this->_fpVal--;
+    return *this;
+}
+
+/********** - overloading min and max functions - **********/
+
+Fixed &Fixed::min(Fixed &a, Fixed &b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return a;
+    else
+        return b;
+}
+
+const Fixed &Fixed::min(const Fixed &a, const Fixed &b)
+{
+    if (a.getRawBits() < b.getRawBits())
+        return a;
+    else
+        return b;
+}
+
+Fixed &Fixed::max(Fixed &a, Fixed &b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return a;
+    else
+        return b;
+}
+
+const Fixed &Fixed::max(const Fixed &a, const Fixed &b)
+{
+    if (a.getRawBits() > b.getRawBits())
+        return a;
+    else
+        return b;
+}
