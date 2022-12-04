@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:31:01 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/03 18:30:14 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/04 13:39:13 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ class Fixed
         Fixed &operator ++(void); //pre-increment overload
         Fixed operator --(int); //post-decrement overload
         Fixed &operator --(void); //pre-decrement overload
-        Fixed &min(Fixed &a, Fixed &b);
-        const Fixed &min(const Fixed &a, const Fixed &b);
-        Fixed &max(Fixed &a, Fixed &b);
-        const Fixed &max(const Fixed &a, const Fixed &b);
+        static Fixed &min(Fixed &a, Fixed &b);
+        static const Fixed &min(const Fixed &a, const Fixed &b);
+        static Fixed & max(Fixed &a, Fixed &b);
+        static const Fixed & max(const Fixed &a, const Fixed &b);
 
 
         int     getRb(void) const;

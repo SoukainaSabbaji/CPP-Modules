@@ -6,7 +6,7 @@
 #    By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/22 16:30:51 by ssabbaji          #+#    #+#              #
-#    Updated: 2022/11/22 16:30:54 by ssabbaji         ###   ########.fr        #
+#    Updated: 2022/12/04 13:32:09 by ssabbaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,8 @@ NAME			= Fixed
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS) $(HEADERS)
-				c++ $(CXXFLAGS) -o $(NAME) $(OBJS) 
+$(NAME):		$(SRCS) $(HEADERS)
+				c++ $(SRCS) $(CXXFLAGS) -o $(NAME)
 
 clean:
 				rm -f $(OBJS)
