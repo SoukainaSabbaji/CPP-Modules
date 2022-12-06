@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:30:57 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/04 14:05:09 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/05 13:39:44 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ Fixed::Fixed(const int num)
 
 Fixed::Fixed(const float num)
 {
+    std::cout << "Float constructor called" << std::endl;
     this->_fpVal = roundf(num * (1 << _fbNum));
 }
 /********** - conversion functions - **********/

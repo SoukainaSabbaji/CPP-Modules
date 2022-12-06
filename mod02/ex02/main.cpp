@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:31:04 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/04 14:04:06 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/05 17:25:14 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 int main(void)
 {
+    
     Fixed a;
     Fixed const b(Fixed(5.05f) * Fixed(2));
     std::cout << a << std::endl;
