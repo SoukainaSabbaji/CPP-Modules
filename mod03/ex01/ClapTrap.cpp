@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:33:58 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/07 12:41:47 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/07 14:13:53 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,16 @@
 
 ClapTrap::ClapTrap()
 {
+    this->_name = "vagabond";
+    this->_attack_damage = 0;
+    this->_hitpoints = 10;
+    this->_energy_points = 10;
     std::cout << "I am the best robot. Yeah, yeah, yeah ";
     std::cout << ", I am the best robot. Ooh, ooh, here we go!" << std::endl;  
 }
 
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitpoints(10), _energy_points(10), _attack_damage(10)
 {
-
 }
 
 ClapTrap::ClapTrap(std::string name, int hp, int ep, int ad)
@@ -49,6 +52,12 @@ ClapTrap    &ClapTrap::operator=(const ClapTrap &obj)
     this->_attack_damage = obj._attack_damage;
 	return *this;
 }
+
+ClapTrap::ClapTrap(ClapTrap const &src)
+{
+    *this = src;
+}
+
 /********** - getters - **********/
 
 std::string ClapTrap::getName() const
@@ -69,6 +78,27 @@ int ClapTrap::getEnergyPoints() const
 int ClapTrap::getAttackDamage() const
 {
     return (this->_attack_damage);
+}
+/********** - setters - **********/
+
+void::ClapTrap::setEnergyPoints(int ep)
+{
+    this->_energy_points = ep;
+}
+
+void::ClapTrap::setHitPoints(int hp)
+{
+    this->_hitpoints = hp;
+}
+
+void::ClapTrap::setName(std::string name)
+{
+    this->_name = name;
+}
+
+void::ClapTrap::setAttackDamage(int ad)
+{
+    this->_attack_damage = ad;
 }
 
 /********** - ClapTrap fight mode - **********/
