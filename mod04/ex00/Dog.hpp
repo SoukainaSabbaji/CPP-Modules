@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 11:34:04 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/08 17:09:21 by ssabbaji         ###   ########.fr       */
+/*   Created: 2022/12/09 11:52:58 by ssabbaji          #+#    #+#             */
+/*   Updated: 2022/12/09 14:56:01 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef DOG_HPP
+# define DOG_HPP
 
-int main()
+# include "Animal.hpp"
+
+class Dog : public Animal
 {
-    ClapTrap a;
-    ClapTrap b("B");
-    ClapTrap c("C", 100, 100, 100);
-    ClapTrap d(c);
-    ClapTrap e;
-    e = d;
-    a.attack("B");
-    b.takeDamage(10);
-    b.beRepaired(10);
-    c.attack("D");
-    d.takeDamage(10);
-    d.beRepaired(10);
-    e.attack("A");
-    a.takeDamage(10);
-    a.beRepaired(10);
-    return (0);
-    
-}
+    public:
+        Dog();
+        Dog(Dog const &src);
+        Dog &operator=(Dog const &rhs);
+        ~Dog();
+        void makeSound() const;
+};
+
+#endif

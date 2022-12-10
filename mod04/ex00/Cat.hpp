@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/06 11:34:04 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/08 17:09:21 by ssabbaji         ###   ########.fr       */
+/*   Created: 2022/12/09 11:52:50 by ssabbaji          #+#    #+#             */
+/*   Updated: 2022/12/09 14:55:09 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#ifndef CAT_HPP
+# define CAT_HPP
 
-int main()
+# include "Animal.hpp"
+
+class Cat : public Animal
 {
-    ClapTrap a;
-    ClapTrap b("B");
-    ClapTrap c("C", 100, 100, 100);
-    ClapTrap d(c);
-    ClapTrap e;
-    e = d;
-    a.attack("B");
-    b.takeDamage(10);
-    b.beRepaired(10);
-    c.attack("D");
-    d.takeDamage(10);
-    d.beRepaired(10);
-    e.attack("A");
-    a.takeDamage(10);
-    a.beRepaired(10);
-    return (0);
-    
-}
+    public:
+        Cat();
+        Cat(Cat const &src);
+        Cat &operator=(Cat const &rhs);
+        ~Cat();
+        void makeSound() const;
+};
+
+#endif

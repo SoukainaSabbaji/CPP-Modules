@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 11:33:58 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/07 14:15:08 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:09:10 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,10 +24,13 @@ ClapTrap::ClapTrap()
     std::cout << ", I am the best robot. Ooh, ooh, here we go!" << std::endl;  
 }
 
+
+//overload constructor 1
 ClapTrap::ClapTrap(std::string name) : _name(name), _hitpoints(10), _energy_points(10), _attack_damage(10)
 {
 }
 
+//overload constructor 2
 ClapTrap::ClapTrap(std::string name, int hp, int ep, int ad)
 {
     this->_name = name;
@@ -42,6 +45,7 @@ ClapTrap::~ClapTrap()
     std::cout << "-- thanks for comin' to my party" << std::endl;
 }
 
+//copy assignment operator
 ClapTrap    &ClapTrap::operator=(const ClapTrap &obj)
 {
 	if (this == &obj)
@@ -53,6 +57,7 @@ ClapTrap    &ClapTrap::operator=(const ClapTrap &obj)
 	return *this;
 }
 
+//copy constructor
 ClapTrap::ClapTrap(ClapTrap const &src)
 {
     *this = src;
