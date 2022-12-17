@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 15:39:10 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/10 17:06:56 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:10:53 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class Brain
         ~Brain();
         Brain(Brain const &src);
         Brain &operator=(Brain const &rhs);
-        std::string *getIdea(int i);
+        std::string *getIdeas();
         void setIdea(std::string idea, int i);
 };
 

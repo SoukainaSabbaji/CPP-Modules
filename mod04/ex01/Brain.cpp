@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 15:39:06 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/10 17:19:27 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:16:09 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,13 +44,20 @@ Brain::~Brain()
 
 /********** - Getters and Setters - **********/
 
-std::string *Brain::getIdea(int i)
+// std::string *Brain::getIdea(int i)
+// {
+//     return &this->ideas[i];
+// }
+
+
+std::string *Brain::getIdeas()
 {
-    return &this->ideas[i];
+	return (this->ideas);
 }
 
 void Brain::setIdea(std::string idea, int i)
 {
     this->ideas[i] = idea;
 }
+
 

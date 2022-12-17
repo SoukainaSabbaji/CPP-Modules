@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:52:45 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/10 17:34:31 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:14:20 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void    Cat::setBrainIdea(int i, std::string idea)
 
 std::string Cat::getBrainIdea(int i) const
 {
-    return *this->brain->getIdea(i);
+    return this->brain->getIdeas()[i];
 }
 
 

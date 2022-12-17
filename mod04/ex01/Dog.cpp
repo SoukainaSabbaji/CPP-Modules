@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:52:54 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/12 13:32:56 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/12 15:14:01 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,6 @@ void Dog::makeSound() const
 
 std::string Dog::getBrainIdea(int i) const
 {
-    return *this->brain->getIdea(i);
+    return this->brain->getIdeas()[i];
 }
 

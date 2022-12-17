@@ -6,7 +6,7 @@
 #    By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/09 11:53:04 by ssabbaji          #+#    #+#              #
-#    Updated: 2022/12/12 13:32:08 by ssabbaji         ###   ########.fr        #
+#    Updated: 2022/12/12 13:34:40 by ssabbaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ NAME			= Animal
 all:			$(NAME)
 
 $(NAME):		$(SRCS) $(HEADERS)
-				c++ $(SRCS) $(CXXFLAGS) -o $(NAME)
+				c++ $(SRCS) $(CXXFLAGS) -o $(NAME) -fsanitize=address
 
 clean:
 				rm -f $(OBJS)
