@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:52:45 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/12 15:14:20 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/17 12:52:45 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ Cat::Cat()
 {
     this->brain = new Brain();
     this->type = "Cat";
-    std::cout << "Cat constructor called" << std::endl;
+    std::cout << GREEN << "Cat constructor called" << RESET << std::endl;
 }
 
 Cat::Cat(Cat const &src)
 {
-    std::cout << "Cat copy constructor called" << std::endl;
+    std::cout << GREEN << "Cat copy constructor called" << RESET << std::endl;
     *this = src;
 }
 
@@ -37,7 +37,7 @@ Cat &Cat::operator=(Cat const &rhs)
 Cat::~Cat()
 {
     delete this->brain;
-    std::cout << "Cat destructor called" << std::endl;
+    std::cout << RED << "Cat destructor called" << RESET << std::endl;
 }
 
 
@@ -45,7 +45,7 @@ Cat::~Cat()
 
 void Cat::makeSound() const
 {
-    std::cout << "Meow :3" << std::endl;
+    std::cout << YELLOW << "Meow :3" << RESET << std::endl;
 }
 
 void    Cat::setBrainIdea(int i, std::string idea)

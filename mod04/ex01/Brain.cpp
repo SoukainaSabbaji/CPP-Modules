@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 15:39:06 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/12 15:16:09 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/17 12:51:05 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@
 
 Brain::Brain()
 {
-    std::cout << "Brain constructor called" << std::endl;
+    std::cout << GREEN << "Brain constructor called" << RESET << std::endl;
     for (int i = 0; i < 100; i++)
         this->ideas[i] = "no thoughts head empty";
 } 
 
 Brain::Brain(Brain const &src)
 {
-    std::cout << "Brain copy constructor called" << std::endl;
+    std::cout << GREEN << "Brain copy constructor called" << RESET << std::endl;
     *this = src;
 }
 
@@ -39,16 +39,10 @@ Brain &Brain::operator=(Brain const &rhs)
 
 Brain::~Brain()
 {
-    std::cout << "Brain destructor called" << std::endl;
+    std::cout << RED << "Brain destructor called" << RESET << std::endl;
 }
 
 /********** - Getters and Setters - **********/
-
-// std::string *Brain::getIdea(int i)
-// {
-//     return &this->ideas[i];
-// }
-
 
 std::string *Brain::getIdeas()
 {

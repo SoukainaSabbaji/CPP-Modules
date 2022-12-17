@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:48:27 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/09 14:49:07 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/17 12:56:45 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@
 Animal::Animal()
 {
     this->type = "vanilla";
-    std::cout << "Animal constructor called" << std::endl;
+    std::cout << GREEN << "Animal constructor called" << RESET << std::endl;
 }
 
 Animal::Animal(Animal const &src)
 {
-    std::cout << "Animal copy constructor called" << std::endl;
+    std::cout<< GREEN  << "Animal copy constructor called" << RESET  << std::endl;
     *this = src;
 }
 
@@ -35,7 +35,7 @@ Animal &Animal::operator=(Animal const &rhs)
 
 Animal::~Animal()
 {
-    std::cout << "Animal destructor called" << std::endl;
+    std::cout << RED << "Animal destructor called"  << RESET<< std::endl;
 }
 
 /********** - Getters and Setters - **********/
@@ -49,5 +49,5 @@ std::string Animal::getType() const
 
 void Animal::makeSound() const
 {
-    std::cout << "Generic animal sound" << std::endl;
+    std::cout << BLUE << "Generic animal sound" << RESET << std::endl;
 }

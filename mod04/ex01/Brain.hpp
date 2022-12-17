@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/10 15:39:10 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/12 15:10:53 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/17 12:50:20 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define BRAIN_HPP
 
 #include <iostream>
-
+#include "Animal.hpp"
 class Brain
 {
     private:

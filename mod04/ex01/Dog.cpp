@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:52:54 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/12 15:14:01 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/17 12:54:19 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,14 @@
 
 Dog::Dog()
 {
+    this->brain = new Brain();
     this->type = "Dog";
-    std::cout << "Dog constructor called" << std::endl;
+    std::cout << GREEN << "Dog constructor called" << RESET << std::endl;
 }
 
 Dog::Dog(Dog const &src)
 {
-    std::cout << "Dog copy constructor called" << std::endl;
+    std::cout << GREEN << "Dog copy constructor called" << RESET << std::endl;
     *this = src;
 }
 
@@ -35,7 +36,8 @@ Dog &Dog::operator=(Dog const &rhs)
 
 Dog::~Dog()
 {
-    std::cout << "Dog destructor called" << std::endl;
+    delete this->brain;
+    std::cout << RED << "Dog destructor called" << RESET << std::endl;
 }
 
 
@@ -43,7 +45,7 @@ Dog::~Dog()
 
 void Dog::makeSound() const
 {
-    std::cout << "haw hawa haw haw :p" << std::endl;
+    std::cout << MAGENTA << "haw hawa haw haw :p" << RESET << std::endl;
 }
 
 std::string Dog::getBrainIdea(int i) const
