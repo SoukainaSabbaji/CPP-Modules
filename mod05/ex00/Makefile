@@ -6,7 +6,7 @@
 #    By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 13:03:04 by ssabbaji          #+#    #+#              #
-#    Updated: 2022/12/18 13:03:46 by ssabbaji         ###   ########.fr        #
+#    Updated: 2022/12/20 17:51:39 by ssabbaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADERS			= Bureaucrat.hpp
 
 CXXFLAGS		= -Wall -Wextra -Werror -std=c++98 
 
-NAME			= Animal
+NAME			= Bureaucrat
 
 all:			$(NAME)
 
