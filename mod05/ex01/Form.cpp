@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/21 13:31:36 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/21 13:35:36 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:38:48 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,19 @@ int Form::getExecGrade() const
     return this->_ExecGrade;
 }
 
-void Form::beSigned()
+void Form::beSigned(Bureaucrat const &r)
 {
-    this->_signed = true;
+    if (r.getGrade() > this->_SignGrade)
+        throw Form::GradeTooLowException();
+    else
+        this->_signed = true;
+}
+
+/********** - insertion operator overload - **********/
+
+std::ostream &operator<<(std::ostream &o, Form const &r)
+{
+    o << CYAN << "Form name: " << r.getName() << " sign status: " << r.getSigned() << " SignGrade: " << r.getSignGrade() << " ExecGrade: " << r.getExecGrade() << RESET << std::endl;
+    return o;
 }
 

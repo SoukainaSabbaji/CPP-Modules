@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 13:06:12 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/20 17:53:43 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:29:56 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,3 +81,23 @@ std::ostream &operator<<(std::ostream &o, Bureaucrat const &rhs)
 	return o;
 }
 
+/********** - signForm - **********/
+
+void    Bureaucrat::signForm(Form &ref)
+{
+    std::cout << CYAN << "Signing " << this->getName() <<"'s Form" << RESET << std::endl;
+    if (this->_grade > ref.getSignGrade())
+    {
+        std::cout << RED << this->getName() << " cannot sign " << ref.getName() <<" because" ;
+        std::cout << "his grade is too low" << RESET << std::endl;
+        throw GradeTooLowException();
+    }
+    else if (this->_grade < ref.getSignGrade())
+    {
+        std::cout << RED << this->getName() << " cannot sign " << ref.getName() <<" because";
+        std::cout << "his grade is too high" << RESET << std::endl;
+        throw GradeTooHighException();
+    }
+    else
+        std::cout << this->getName() << "signed Form" << std::endl;
+}

@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 18:39:48 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/21 11:47:58 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/21 14:37:50 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 #define RESET "\x1b[0m"
 
 #include <iostream>
+#include "Bureaucrat.hpp"
 
 class Form
 {
@@ -41,7 +42,7 @@ class Form
         bool        getSigned() const;
         int         getSignGrade() const;
         int         getExecGrade() const;
-        void        beSigned();
+        void        beSigned(Bureaucrat const &b);
         class GradeTooHighException : public std::exception
         {
             public:
@@ -59,5 +60,6 @@ class Form
                 }
         };
 };
+std::ostream &operator<<(std::ostream &o, Form const &r);
 
 #endif 

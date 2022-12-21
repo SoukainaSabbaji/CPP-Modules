@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 13:04:00 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/20 17:47:35 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/21 15:09:00 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@
 #define RESET "\x1b[0m"
 
 #include <iostream>
-
+#include "Form.hpp"
 
 class Bureaucrat
 {
     private:
         const std::string _name;
-        int _grade;
+        int               _grade;
     public:
         Bureaucrat();
         Bureaucrat(std::string name, int grade);
@@ -37,9 +37,10 @@ class Bureaucrat
         Bureaucrat &operator=(Bureaucrat const &rhs);
         ~Bureaucrat();
         std::string getName() const;
-        int getGrade() const;
-        void incrementGrade();
-        void decrementGrade();
+        int         getGrade() const;
+        void        incrementGrade();
+        void        decrementGrade();
+        void        signForm(Form &ref);
         class GradeTooHighException : public std::exception
         {
             public:
