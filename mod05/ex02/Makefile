@@ -6,13 +6,13 @@
 #    By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/12/18 13:03:04 by ssabbaji          #+#    #+#              #
-#    Updated: 2022/12/24 12:12:25 by ssabbaji         ###   ########.fr        #
+#    Updated: 2022/12/24 13:47:59 by ssabbaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			= Bureaucrat.cpp Form.cpp main.cpp 
+SRCS			= Bureaucrat.cpp AForm.cpp main.cpp  ShrubberyCreationForm.cpp RobotomyRequestForm.cpp PresidentialPardonForm.cpp
 OBJS			= $(SRCS:.cpp=.o)
-HEADERS			= Bureaucrat.hpp Form.hpp 
+HEADERS			= Bureaucrat.hpp AForm.hpp  ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 
 CXXFLAGS		= -Wall -Wextra -Werror -std=c++98 
 
