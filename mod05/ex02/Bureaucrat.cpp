@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 13:06:12 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/24 18:40:15 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/26 16:08:54 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ Bureaucrat::Bureaucrat()
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
+    if (_grade < 1)
+        throw GradeTooHighException();
+    else if (_grade > 150)
+        throw GradeTooLowException();
     std::cout << GREEN << "Bureaucrat parametrized constructor called" << RESET << std::endl;   
 } 
 
@@ -89,35 +93,23 @@ void    Bureaucrat::signForm(AForm &ref)
     if (this->_grade > ref.getSignGrade())
     {
         std::cout << RED << this->getName() << " cannot sign " << ref.getName() <<" because" ;
-        std::cout << "his grade is too low" << RESET << std::endl;
+        std::cout << " their grade is too low" << RESET << std::endl;
         throw GradeTooLowException();
     }
-    else if (this->_grade < ref.getSignGrade())
-    {
-        std::cout << RED << this->getName() << " cannot sign " << ref.getName() <<" because";
-        std::cout << "his grade is too high" << RESET << std::endl;
-        throw GradeTooHighException();
-    }
     else
-        std::cout << this->getName() << "signed Form" << std::endl;
+        std::cout << this->getName() << " signed Form" << std::endl;
 }
 
 /********** - executeForm - **********/
 
-void    Bureaucrat::executeForm(AForm const & form)
+void    Bureaucrat::execute(AForm const & form)
 {
     std::cout << CYAN << "Executing " << this->getName() <<"'s Form" << RESET << std::endl;
     if (this->_grade > form.getExecGrade())
     {
         std::cout << RED << this->getName() << " cannot execute " << form.getName() <<" because" ;
-        std::cout << "his grade is too low" << RESET << std::endl;
+        std::cout << " their grade is too low" << RESET << std::endl;
         throw GradeTooLowException();
-    }
-    else if (this->_grade < form.getExecGrade())
-    {
-        std::cout << RED << this->getName() << " cannot execute " << form.getName() <<" because";
-        std::cout << "his grade is too high" << RESET << std::endl;
-        throw GradeTooHighException();
     }
     else
         std::cout << this->getName() << " executed Form" << std::endl;

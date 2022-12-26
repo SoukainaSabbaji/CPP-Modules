@@ -6,12 +6,15 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/20 17:38:47 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/24 18:40:02 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/26 16:10:17 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Bureaucrat.hpp"
+#include "RobotomyRequestForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "AForm.hpp"
 
 int main()
@@ -42,12 +45,96 @@ int main()
    std::cout << form2.getName() << " has exec grade : " << form2.getExecGrade() << std::endl;
    try
    {
-      // bureaucrat1.executeForm(form2);
-      // bureaucrat2.executeForm(form2);
-      bureaucrat3.executeForm(form2);
+      // bureaucrat1.execute(form2);
+      // bureaucrat2.execute(form2);
+      bureaucrat3.execute(form2);
    }
    catch (std::exception &e)
    {
        std::cerr << MAGENTA << e.what() << RESET << std::endl;
    }
+   //testing signing robotomy request
+   //creating robotomy request
+   AForm *robotomyRequest = new RobotomyRequestForm("Bender");
+   std::cout << robotomyRequest->getName() << " has sign grade : " << robotomyRequest->getSignGrade() << std::endl;
+   std::cout << robotomyRequest->getName() << " has exec grade : " << robotomyRequest->getExecGrade() << std::endl;
+   try
+   {
+      // bureaucrat1.signForm(*robotomyRequest);
+      bureaucrat2.signForm(*robotomyRequest);
+      // bureaucrat3.signForm(*robotomyRequest);
+   }
+   catch (std::exception &e)
+   {
+       std::cerr << MAGENTA << e.what() << RESET << std::endl;
+   }
+   //testing executing robotomy request
+   try
+   {
+      // bureaucrat1.execute(*robotomyRequest);
+      // bureaucrat2.execute(*robotomyRequest);
+      bureaucrat3.execute(*robotomyRequest);
+   }
+   catch (std::exception &e)
+   {
+       std::cerr << MAGENTA << e.what() << RESET << std::endl;
+   }
+   //testing signing presidential pardon
+   //creating presidential pardon
+   AForm *presidentialPardon = new PresidentialPardonForm("Bender");
+   std::cout << presidentialPardon->getName() << " has sign grade : " << presidentialPardon->getSignGrade() << std::endl;
+   std::cout << presidentialPardon->getName() << " has exec grade : " << presidentialPardon->getExecGrade() << std::endl;
+   try
+   {
+      // bureaucrat1.signForm(*presidentialPardon);
+      // bureaucrat2.signForm(*presidentialPardon);
+      bureaucrat3.signForm(*presidentialPardon);
+   }
+   catch (std::exception &e)
+   {
+       std::cerr << MAGENTA << e.what() << RESET << std::endl;
+   }
+   //testing executing presidential pardon
+   try
+   {
+      // bureaucrat1.execute(*presidentialPardon);
+      // bureaucrat2.execute(*presidentialPardon);
+      bureaucrat3.execute(*presidentialPardon);
+   }
+   catch (std::exception &e)
+   {
+       std::cerr << MAGENTA << e.what() << RESET << std::endl;
+   }
+   //testing signing shrubbery creation
+   //creating shrubbery creation
+   AForm *shrubberyCreation = new ShrubberyCreationForm("Bender");
+   std::cout << shrubberyCreation->getName() << " has sign grade : " << shrubberyCreation->getSignGrade() << std::endl;
+   std::cout << shrubberyCreation->getName() << " has exec grade : " << shrubberyCreation->getExecGrade() << std::endl;
+   try
+   {
+      // bureaucrat1.signForm(*shrubberyCreation);
+      std::cout << "signing shrub" << std::endl;
+      bureaucrat2.signForm(*shrubberyCreation);
+      // bureaucrat3.signForm(*shrubberyCreation);
+   }
+   catch (std::exception &e)
+   {
+       std::cerr << MAGENTA << e.what() << RESET << std::endl;
+   }
+   //testing executing shrubbery creation
+   try
+   {
+      // bureaucrat1.execute(*shrubberyCreation);
+      // bureaucrat2.execute(*shrubberyCreation);
+      std::cout << "executing shrub" << std::endl;
+      shrubberyCreation->execute(bureaucrat3);
+      // bureaucrat3.execute(*shrubberyCreation);
+   }
+   catch (std::exception &e)
+   {
+
+       std::cerr << MAGENTA << e.what() << RESET << std::endl;
+   }
+   return (0);
+   
 }

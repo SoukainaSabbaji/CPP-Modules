@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 13:06:12 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/21 15:29:56 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/26 15:33:12 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,10 @@ Bureaucrat::Bureaucrat()
 
 Bureaucrat::Bureaucrat(std::string name, int grade) : _name(name), _grade(grade)
 {
+    if (_grade < 1)
+        throw GradeTooHighException();
+    else if (_grade > 150)
+        throw GradeTooLowException();
     std::cout << GREEN << "Bureaucrat parametrized constructor called" << RESET << std::endl;   
 } 
 
@@ -89,14 +93,8 @@ void    Bureaucrat::signForm(Form &ref)
     if (this->_grade > ref.getSignGrade())
     {
         std::cout << RED << this->getName() << " cannot sign " << ref.getName() <<" because" ;
-        std::cout << "his grade is too low" << RESET << std::endl;
+        std::cout << "their grade is too low" << RESET << std::endl;
         throw GradeTooLowException();
-    }
-    else if (this->_grade < ref.getSignGrade())
-    {
-        std::cout << RED << this->getName() << " cannot sign " << ref.getName() <<" because";
-        std::cout << "his grade is too high" << RESET << std::endl;
-        throw GradeTooHighException();
     }
     else
         std::cout << this->getName() << "signed Form" << std::endl;
