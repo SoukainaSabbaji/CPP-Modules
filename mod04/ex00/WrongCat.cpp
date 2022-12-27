@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 16:05:37 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/09 17:28:57 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/25 14:34:37 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,5 +40,3 @@ void WrongCat::makeSound() const
 {
     std::cout << "WrongCat sound" << std::endl;
 }
-
-

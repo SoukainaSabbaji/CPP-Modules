@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/09 11:53:01 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/09 17:28:27 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/27 12:42:43 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,18 @@
 
 int main()
 {
-    const Animal *meta = new Animal();
-    const Animal *j = new Dog();
-    const Animal *i = new Cat();
-    const WrongAnimal *meta1 = new WrongAnimal();
-    const WrongAnimal *j1 = new WrongCat();
-    std::cout << j->getType() << " " << std::endl;
-    std::cout << i->getType() << " " << std::endl;
-    meta1->makeSound();
+    const Animal        *gen = new Animal();
+    const Animal        *gromit = new Dog();
+    const Animal        *garfield = new Cat();
+    const WrongAnimal   *gen1 = new WrongAnimal();
+    const WrongAnimal   *j1 = new WrongCat();
+    std::cout << gromit->getType() << " " << std::endl;
+    std::cout << garfield->getType() << " " << std::endl;
+    gen1->makeSound();
     j1->makeSound();
-    i->makeSound(); // will output the cat sound!
-    j->makeSound();
-    meta->makeSound();
-    //more tests
+    garfield->makeSound();
+    gromit->makeSound();
+    gen->makeSound();
     std::cout << "------------------" << std::endl;
     const WrongAnimal *j2 = new WrongAnimal();
     std::cout << j2->getType() << " " << std::endl;
@@ -39,10 +38,10 @@ int main()
     std::cout << j3->getType() << " " << std::endl;
     j3->makeSound();
     std::cout << "------------------" << std::endl;
-    delete meta;
-    delete j;
-    delete i;
-    delete meta1;
+    delete gen;
+    delete gromit;
+    delete garfield;
+    delete gen1;
     delete j1;
     delete j2;
     delete j3;
