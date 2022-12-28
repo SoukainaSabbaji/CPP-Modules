@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:37:37 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/26 16:09:55 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/28 12:52:05 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
 {
+    // std::cout << "ShrubberyCreationForm::execute called" << std::endl;
     if (executor.getGrade() > getExecGrade())
         throw AForm::GradeTooLowException();
     if (!getSigned())

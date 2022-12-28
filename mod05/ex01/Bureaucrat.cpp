@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 13:06:12 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/26 15:33:12 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/28 11:27:52 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ void    Bureaucrat::signForm(Form &ref)
     if (this->_grade > ref.getSignGrade())
     {
         std::cout << RED << this->getName() << " cannot sign " << ref.getName() <<" because" ;
-        std::cout << "their grade is too low" << RESET << std::endl;
+        std::cout << " their grade :"<< this->getGrade() << " is too low" << RESET << std::endl;
         throw GradeTooLowException();
     }
     else

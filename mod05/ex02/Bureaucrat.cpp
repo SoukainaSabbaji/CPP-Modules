@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/18 13:06:12 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/26 16:08:54 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/28 12:50:03 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,22 +93,25 @@ void    Bureaucrat::signForm(AForm &ref)
     if (this->_grade > ref.getSignGrade())
     {
         std::cout << RED << this->getName() << " cannot sign " << ref.getName() <<" because" ;
-        std::cout << " their grade is too low" << RESET << std::endl;
+        std::cout << " their grade :"<< this->getGrade() << " is too low" << RESET << std::endl;
         throw GradeTooLowException();
     }
     else
+    {
+        ref.beSigned(*this);
         std::cout << this->getName() << " signed Form" << std::endl;
+    }
 }
 
 /********** - executeForm - **********/
 
-void    Bureaucrat::execute(AForm const & form)
+void    Bureaucrat::executeForm(AForm const & form)
 {
     std::cout << CYAN << "Executing " << this->getName() <<"'s Form" << RESET << std::endl;
     if (this->_grade > form.getExecGrade())
     {
         std::cout << RED << this->getName() << " cannot execute " << form.getName() <<" because" ;
-        std::cout << " their grade is too low" << RESET << std::endl;
+        std::cout << " their grade :"<< this->getGrade() << " is too low" << RESET << std::endl;
         throw GradeTooLowException();
     }
     else
