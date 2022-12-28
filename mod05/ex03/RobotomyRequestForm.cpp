@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 14:32:23 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/24 15:16:38 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/28 15:26:29 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ RobotomyRequestForm::~RobotomyRequestForm()
     std::cout << RED << "" << RESET << std::endl;
 }
 
-//execute function
 
 void RobotomyRequestForm::execute(const Bureaucrat &executor) const
 {

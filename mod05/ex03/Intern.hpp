@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 13:13:20 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/28 13:33:56 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:47:31 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@
 
 class Intern
 {
-    private:
-        Intern();
     public:
+        Intern();
         Intern(Intern const &src);
         Intern &operator=(Intern const &rhs);
         ~Intern();
-        AForm *makeForm(std::string form, std::string target);
+        AForm           *makeForm(std::string form, std::string target);
         class FormDoesNotExistException : public std::exception
         {
             public:

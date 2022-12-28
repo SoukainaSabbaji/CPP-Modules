@@ -6,12 +6,14 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/28 13:13:25 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/28 14:08:30 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/28 14:50:51 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Intern.hpp"
 #include <map>
+
+/********************** Constructors and destructors **********************/
 
 Intern::Intern()
 {
@@ -35,7 +37,9 @@ Intern::~Intern()
     std::cout << RED << "Dobby is a free Elf" << RESET << std::endl;
 }
 
-static AForm	*new_robo(std::string target)
+/********************** MakeForm and function pointers **********************/
+
+static AForm	*new_bot(std::string target)
 {
 	AForm	*robo = new RobotomyRequestForm(target);
 	return (robo);
@@ -55,12 +59,12 @@ static AForm	*new_shrub(std::string target)
 
 AForm *Intern::makeForm(std::string form_name, std::string form_target)
 {
-	AForm	*(*fct[3])(std::string target) = { new_robo, new_pardon, new_shrub};
-	std::string	msg[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
+	AForm	*(*fct[3])(std::string target) = { new_bot, new_pardon, new_shrub};
+	std::string	form_names[3] = {"robotomy request", "presidential pardon", "shrubbery creation"};
 	AForm	*ret = NULL;
 	for (int i = 0; i < 3; i++)
 	{
-		if (form_name == msg[i])
+		if (form_name == form_names[i])
 			ret = fct[i](form_target);
 	}
 	if (ret)
@@ -70,6 +74,7 @@ AForm *Intern::makeForm(std::string form_name, std::string form_target)
 	return (ret);
 }
 
+/********************** Exception **********************/
 
 const char *Intern::FormDoesNotExistException::what() const throw()
 {
