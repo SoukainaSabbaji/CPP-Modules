@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/29 13:30:41 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/29 13:41:41 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/29 16:19:45 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,16 @@
 #include <cstring>
 #include <cmath>
 
+
+class Convert
+{
+    public:
+        Convert();
+        Convert(Convert const &src);
+        Convert &operator=(Convert const &rhs);
+        ~Convert();
+        void convert(char *str);
+}
 
 #define RED   "\x1b[31m"
 #define GREEN   "\x1b[32m"
