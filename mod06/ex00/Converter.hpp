@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   convert.hpp                                        :+:      :+:    :+:   */
+/*   converter.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/12/29 13:30:41 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/29 16:19:45 by ssabbaji         ###   ########.fr       */
+/*   Created: 2022/12/30 13:19:47 by ssabbaji          #+#    #+#             */
+/*   Updated: 2022/12/30 13:54:15 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,10 @@
 #include <limits>
 #include <cstring>
 #include <cmath>
-
-
-class Convert
-{
-    public:
-        Convert();
-        Convert(Convert const &src);
-        Convert &operator=(Convert const &rhs);
-        ~Convert();
-        void convert(char *str);
-}
+#include <climits>
+#include <iomanip>
+#include <cfloat>
+#include <cstdlib>
 
 #define RED   "\x1b[31m"
 #define GREEN   "\x1b[32m"
@@ -37,5 +30,25 @@ class Convert
 #define MAGENTA   "\x1b[35m"
 #define CYAN   "\x1b[36m"
 #define RESET "\x1b[0m"
+
+class Converter
+{
+    private:
+        std::string _str;
+    public:
+        Converter();
+        Converter(std::string str);
+        Converter(Converter const &src);
+        Converter &operator=(Converter const &rhs);
+        std::string getStr() const;
+        ~Converter();
+        void convert(std::string str);
+
+        operator char() ;
+        operator int() ;
+        operator float() ;
+        operator double() ;      
+};
+
 
 #endif

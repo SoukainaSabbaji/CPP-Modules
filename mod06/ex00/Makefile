@@ -5,13 +5,14 @@
 #                                                     +:+ +:+         +:+      #
 #    By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2022/12/29 15:26:16 by ssabbaji          #+#    #+#              #
-#    Updated: 2022/12/29 15:26:37 by ssabbaji         ###   ########.fr        #
+#    Created: 2022/12/30 13:20:21 by ssabbaji          #+#    #+#              #
+#    Updated: 2022/12/30 13:24:07 by ssabbaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS			= main.cpp
+SRCS			= main.cpp Converter.cpp 
 OBJS			= $(SRCS:.cpp=.o)
+HEADERS			= Converter.hpp
 
 CXXFLAGS		= -Wall -Wextra -Werror -std=c++98 
 
@@ -19,7 +20,7 @@ NAME			= convert
 
 all:			$(NAME)
 
-$(NAME):		$(OBJS)
+$(NAME):		$(OBJS) $(HEADERS)
 				c++ $(CXXFLAGS) -o $(NAME) $(OBJS)  -fsanitize=address
 
 clean:
