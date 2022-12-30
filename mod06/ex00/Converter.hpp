@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 13:19:47 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/30 13:54:15 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/30 14:37:31 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ class Converter
         std::string getStr() const;
         ~Converter();
         void convert(std::string str);
-
         operator char() ;
         operator int() ;
         operator float() ;
