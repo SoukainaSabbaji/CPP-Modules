@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 17:30:07 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/30 17:40:41 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/31 14:17:20 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ Data* deserialize(uintptr_t raw)
 
 int main()
 {
-    Data *data = new Data("Hello");
+    Data *data = new Data("Selamat pagi");
+    std::cout << MAGENTA << "Data before serlization" <<data->getValue() << std::endl;
     uintptr_t raw = serialize(data);
     Data *data2 = deserialize(raw);
     std::cout << data2->getValue() << std::endl;

@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 17:54:05 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/30 17:57:34 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/31 14:13:20 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "Aclass.hpp"
 #include "Bclass.hpp"
 #include "Cclass.hpp"
-
 
 Base *generate(void)
 {
@@ -63,4 +62,13 @@ void identify_from_reference(Base &p)
     catch (std::exception &e)
     {
     }
+}
+
+int main()
+{
+    srand(time(NULL));
+    Base *base = generate();
+    identify_from_pointer(base);
+    identify_from_reference(*base);
+    return (0);
 }

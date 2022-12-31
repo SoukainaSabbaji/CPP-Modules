@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   converter.cpp                                      :+:      :+:    :+:   */
+/*   Converter.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 13:20:04 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/30 17:13:28 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2022/12/31 15:56:40 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,7 +149,6 @@ Converter::operator double()
     std::string str = _str;
     if (str.back() == 'f')
         str.erase(str.length() - 1);
-
     char *endptr;
     double value = std::strtod(str.c_str(), &endptr);
     if (endptr == str.c_str() || *endptr != '\0')
