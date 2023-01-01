@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 13:20:04 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/01/01 14:16:46 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/01/01 17:58:53 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,53 @@ bool is_printable(char c)
 
 Converter::operator char()
 {
-    int value;
-    try
-    {
-        value = std::stoi(_str);
-    }
-    catch (const std::exception &e)
-    {
-        char c = _str[0];
-        if (is_printable(c))
-            std::cout << "Converted value: " << c << std::endl;
-        else
-            std::cout << "Converted value: non-printable character" << std::endl;
-        return c;
-    }
-    char c = static_cast<char>(value);
-    if (is_printable(c))
-    {
-        std::cout << "Converted value: " << c << std::endl;
-        return (c);
-    }
-    else
-        std::cout << "Converted value: non-printable character" << std::endl;
-    return c;
+	char c = 0;
+	if (_str.length() == 1)
+	{
+		int d = 0;
+		try
+		{
+			d = stoi(_str);
+			c = static_cast<char>(d);
+		}
+		catch (const std::invalid_argument& ia){
+			c = _str[0];
+		}
+		if (is_printable(c))
+			std::cout << "Converted value: " << c << std::endl;
+		else
+			std::cout << "Converted value: non-printable character" << std::endl;
+		return (c);
+	}
+	else
+	{
+		int	d = 0;
+		try
+		{
+			d = stoi(_str);
+		}
+		catch (const std::invalid_argument& ia){
+			std::cerr << RED << "Error: invalid character" << RESET << std::endl;
+			return (0);
+		}
+		catch (const std::out_of_range& oor) {
+			std::cout << "Converted value: " << c << std::endl;
+			std::cerr << RED << "Error: invalid character" << RESET << std::endl;
+			return (0);
+		}
+		if (d < CHAR_MIN || d > CHAR_MAX)
+		{
+			std::cout << "Converted value: " << c << std::endl;
+			std::cerr << RED << "Error: invalid character" << RESET << std::endl;
+			return (0);
+		}
+		c = static_cast<char>(d);
+		if (is_printable(c))
+			std::cout << "Converted value: " << c << std::endl;
+		else
+			std::cout << "Converted value: non-printable character" << std::endl;
+		return (c);
+	}
 }
 
 Converter::operator int()
