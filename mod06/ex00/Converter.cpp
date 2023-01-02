@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/30 13:20:04 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/01/01 17:58:53 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/01/01 18:27:12 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,3 +192,4 @@ Converter::operator double()
         return (d);
     }
 }
+
