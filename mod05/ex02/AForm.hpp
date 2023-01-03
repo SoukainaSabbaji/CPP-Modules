@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/24 13:36:02 by ssabbaji          #+#    #+#             */
-/*   Updated: 2022/12/28 12:59:47 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/01/02 20:22:25 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ class AForm
         int             getExecGrade() const;
         std::string     getTarget() const;
         void            beSigned(const Bureaucrat &b);
-        virtual void    execute(Bureaucrat const & executor) const ;
+        virtual void    execute(Bureaucrat const & executor) const;
         class GradeTooHighException : public std::exception
         {
             public:

@@ -71,8 +71,6 @@ class Array
         }
 };
 
-//code an iter function template that takes an array and its length and a function pointer and applies that function to each element of the array.
-
 template <typename T>
 void iter(Array<T> &arr, int size, void (*f)(T &)) 
 {
@@ -87,7 +85,5 @@ void print_red(T &a)
 {
     std::cout << RED << a << RESET << std::endl;
 }
-
-
 
 #endif
