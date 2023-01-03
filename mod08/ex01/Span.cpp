@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:16:04 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/01/03 15:08:14 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:50:01 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ Span::Span(unsigned int n) : _n(n)
 
 Span::Span(int first, int last, int jump)
 {
+    std::cout << GREEN << "The better parametrized constructor called :D" << RESET << std::endl;
     for (int i = first; i <= last; i += jump)
         _v.push_back(i);
 }

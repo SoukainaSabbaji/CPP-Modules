@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:18:37 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/01/03 16:09:25 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/01/03 16:51:17 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,31 +35,45 @@
 
 int main()
 {
-	Span sp = Span(5);
-    sp.addNumber(5);
-    sp.addNumber(3);
-    sp.addNumber(17);
-    sp.addNumber(9);
-    sp.addNumber(11);
+	Span sp0 = Span(5);
+    sp0.addNumber(5);
+    sp0.addNumber(3);
+    sp0.addNumber(17);
+    sp0.addNumber(9);
+    sp0.addNumber(11);
     Span	sp1(1, 10, 1);
 	Span	sp2(1, 2000000, 10);
     Span	sp3 = Span(30);
 	iter a = sp1.getV().begin();
 	iter b = sp1.getV().end();
-	sp3.addNumber(a, b);
-	sp3.addNumber(a, b);
-	std::cout << "Shortest span: " << sp2.shortestSpan() << std::endl;
-	std::cout << "Longest span:  " << sp2.longestSpan() << std::endl;
     try
     {
-        sp.addNumber(11);
+	    sp3.addNumber(a, b);
     }
     catch (std::exception &e)
     {
         std::cout << RED << "Can't add more numbers" << RESET << std::endl;
     }
-    std::cout << YELLOW << "Shortest span: " << sp.shortestSpan() << RESET << std::endl;
-    std::cout << YELLOW << "Longest span: " << sp.longestSpan() << RESET << std::endl;
+    try
+    {
+	    sp3.addNumber(a, b);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << RED << "Can't add more numbers" << RESET << std::endl;
+    }
+	std::cout << "Shortest span: " << sp2.shortestSpan() << std::endl;
+	std::cout << "Longest span:  " << sp2.longestSpan() << std::endl;
+    try
+    {
+        sp0.addNumber(11);
+    }
+    catch (std::exception &e)
+    {
+        std::cout << RED << "Can't add more numbers" << RESET << std::endl;
+    }
+    std::cout << YELLOW << "Shortest span: " << sp0.shortestSpan() << RESET << std::endl;
+    std::cout << YELLOW << "Longest span: " << sp0.longestSpan() << RESET << std::endl;
     return (0);
 }
 
