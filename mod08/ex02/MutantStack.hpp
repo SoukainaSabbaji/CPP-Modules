@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 16:53:12 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/01/03 17:01:15 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:03:13 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,10 +43,19 @@ class MutantStack : public std::stack<T>
         {
             std::cout << RED << "MutantStack destroyed :(" << RESET << std::endl;
         }
-        MutantStack &operator=(MutantStack const &rhs) { std::stack<T>::operator=(rhs); return *this; }
+        MutantStack &operator=(MutantStack const &rhs)
+        {
+            std::stack<T>::operator=(rhs); return *this;
+        }
         typedef typename std::stack<T>::container_type::iterator iterator;
-        iterator begin() { return std::stack<T>::c.begin(); }
-        iterator end() { return std::stack<T>::c.end(); }
+        iterator begin()
+        {
+            return std::stack<T>::c.begin();
+        }
+        iterator end()
+        {
+            return std::stack<T>::c.end();
+        }
 };
 
 #endif

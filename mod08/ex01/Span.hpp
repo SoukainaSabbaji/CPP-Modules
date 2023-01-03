@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/03 14:10:26 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/01/03 16:09:31 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/01/03 17:02:04 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef std::vector<int>::iterator iter;
 class Span
 {
     private:
-        unsigned int _n;
-        std::vector<int> _v;
+        unsigned int        _n;
+        std::vector<int>    _v;
     public:
         Span();
         Span(unsigned int n);
