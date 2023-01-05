@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/02 15:30:59 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/01/02 15:38:50 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/01/05 16:01:09 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@
 #define CYAN   "\x1b[36m"
 #define RESET "\x1b[0m"
 
-//iter function t
 template <typename T>
 void iter(T *arr, int len, void (*f)(T &))
 {
@@ -31,7 +30,6 @@ void iter(T *arr, int len, void (*f)(T &))
         f(arr[i]);
 }
 
-//function that will be called on every element of the array
 template <typename T>
 void print_red(T &a)
 {

@@ -6,7 +6,7 @@
 #    By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/02 15:17:40 by ssabbaji          #+#    #+#              #
-#    Updated: 2023/01/02 15:23:19 by ssabbaji         ###   ########.fr        #
+#    Updated: 2023/01/04 14:43:25 by ssabbaji         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ HEADERS			= Whatever.hpp
 
 CXXFLAGS		= -Wall -Wextra -Werror -std=c++98 
 
-NAME			= temp
+NAME			= functemp
 
 all:			$(NAME)
 
