@@ -4,7 +4,7 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        std::cerr << "Error: please provide a positive integer sequence as argument." << std::endl;
+        std::cout << RED << "Error: no numbers provided" << RESET << std::endl;
         return 1;
     }
     std::vector<int> numbers;
@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
         int n = atoi(argv[i]);
         if (n <= 0)
         {
-            std::cerr << "Error: invalid input, please provide only positive integers." << std::endl;
+            std::cout << RED << "Error: negative values not supported." << RESET << std::endl;
             return 1;
         }
         numbers.push_back(n);
