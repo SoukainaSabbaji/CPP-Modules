@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:24:41 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/03/23 17:56:18 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/03/24 12:00:59 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,43 +50,73 @@ void parse_input(std::string &line, std::string& date, float& value)
     std::string datestr, valuestr;
     std::getline(ss, datestr, '|');
     std::getline(ss, valuestr, '|');
-    date = datestr;
+    date = trim_white(datestr);
+    valuestr = std::stof(valuestr);
     char *end;
-    value = std::strtof(trim_white(valuestr).c_str(), &end);
-    if (value < 0)
-        std::cout << RED << "Error : not a positive value" << date << value << RESET << std::endl;
-    else if (value > INT32_MAX)
-        std::cout << RED << "Error : too large a number" << RESET << std::endl;
+    value = std::strtof(valuestr.c_str(), &end);
+    if (*end != '\0' || value < 0 || value > 1000)
+    {
+        std::cout << RED << "Error : not a valid value" << RESET << std::endl;
+        exit(1);
+    }
+    date.erase(std::remove_if(date.begin(), date.end(), ::isspace), date.end());
+    if (date.length() != 10)
+    {
+        std::cout << RED << "Error : not a valid date" << RESET << std::endl;
+        exit(1);
+    }
 }
 
-float find_btc_price(const std::string& date, const std::map<std::string, float>& btc)
-{
-    // std::map<std::string, float>::const_iterator it;
-    // for (it = btc.begin(); it != btc.end(); it++)
-    // {
-    //     std::cout << it->first << "|" << date << std::endl;
-    //     if (strcmp(it->first.c_str(), date.c_str()) == 0)
-    //     {
-    //         std::cout << GREEN << "Found date " << date << RESET << std::endl;
-    //         return (it->second);
-    //     }
-    // }
-    
-    std::cout << "date: " << trim_white(date)  << "size : " << date << std::endl;
-    std::cout << "otehr size : "  <<  std::string("2012-01-11").size() << std::endl;
-    std::map<std::string, float>::const_iterator it = btc.find("2012-01-11");
-    std::cout << "date: " << date << std::endl;
-    if (it != btc.end())
-        return (it->second);
-    // std::cout << "second:" << it->second << std::endl;
 
-    (void)date;
-    // std::cout << it->first << "|" << it->second << std::endl;
-    // std::cout << RED << "Error: could not find date " << date << RESET << std::endl;
+// float find_btc_price(const std::string& date, const std::map<std::string, float>& btc)
+// {
+//     // std::map<std::string, float>::const_iterator it;
+//     // for (it = btc.begin(); it != btc.end(); it++)
+//     // {
+//     //     std::cout << it->first << "|" << date << std::endl;
+//     //     if (strcmp(it->first.c_str(), date.c_str()) == 0)
+//     //     {
+//     //         std::cout << GREEN << "Found date " << date << RESET << std::endl;
+//     //         return (it->second);
+//     //     }
+//     // }
+    
+//     std::cout << "date: " << trim_white(date)  << "size : " << date << std::endl;
+//     std::cout << "otehr size : "  <<  std::string("2012-01-11").size() << std::endl;
+//     std::map<std::string, float>::const_iterator it = btc.find("2012-01-11");
+//     std::cout << "date: " << date << std::endl;
+//     if (it != btc.end())
+//         return (it->second);
+//     // std::cout << "second:" << it->second << std::endl;
+
+//     (void)date;
+//     // std::cout << it->first << "|" << it->second << std::endl;
+//     // std::cout << RED << "Error: could not find date " << date << RESET << std::endl;
+//     return (0);
+// }
+
+float find_btc_price (const std::string& date, const std::map<std::string, float>&btc)
+{
+    std::map<std::string, float>::const_iterator it = btc.find(date);
+
+    if (it == btc.begin())
+        return (it->second);
+    else if (it == btc.end())
+    {
+        --it;
+        return (it->second);
+    }
+    else 
+    {
+        std::map<std::string, float>::const_iterator it2 = it;
+        --it2;
+        if (it->first == date)
+            return (it->second);
+        else if (it2->first == date)
+            return (it2->second);
+    }
     return (0);
 }
-
-
 
 int main(int argc, char **argv)
 {
