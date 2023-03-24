@@ -6,11 +6,13 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:24:41 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/03/24 12:00:59 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/24 13:00:03 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
+#include <cstdlib>
+#include <algorithm>
 
 std::string trim_white(const std::string &str)
 {
@@ -32,70 +34,51 @@ void parse_btc(std::string &line, std::map<std::string, float> &btc)
     std::stringstream ss(line);
     std::getline(ss, date, ',');
     std::getline(ss, price, ',');
-    try 
+    try
     {
-        float price_float = std::stof(trim_white(price));
+        float price_float = std::atof(trim_white(price).c_str());
         btc[trim_white(date)] = price_float;
     }
-    catch (const std::invalid_argument& e) 
+    catch (const std::invalid_argument &e)
     {
         std::cout << "Error: invalid input in line \"" << line << "\"" << std::endl;
     }
 }
 
-
-void parse_input(std::string &line, std::string& date, float& value)
+int parse_input(const std::string &input, std::string &date, float &value)
 {
-    std::stringstream ss(line);
-    std::string datestr, valuestr;
-    std::getline(ss, datestr, '|');
-    std::getline(ss, valuestr, '|');
-    date = trim_white(datestr);
-    valuestr = std::stof(valuestr);
-    char *end;
-    value = std::strtof(valuestr.c_str(), &end);
-    if (*end != '\0' || value < 0 || value > 1000)
+    std::istringstream iss(input);
+    std::string token;
+
+    if (std::getline(iss, token, '|'))
     {
-        std::cout << RED << "Error : not a valid value" << RESET << std::endl;
-        exit(1);
+        date = token;
+        date.erase(std::remove_if(date.begin(), date.end(), ::isspace), date.end());
     }
-    date.erase(std::remove_if(date.begin(), date.end(), ::isspace), date.end());
-    if (date.length() != 10)
+    else
     {
-        std::cout << RED << "Error : not a valid date" << RESET << std::endl;
-        exit(1);
+        std::cerr << "Error: missing date" << std::endl;
+        return 0;
     }
+    if (std::getline(iss, token, '|'))
+    {
+        token = trim_white(token);
+        if (!token.empty())
+            value = std::atof(token.c_str());
+    }
+    else
+    {
+        std::cout << "Error: bad input => \"" << input << "\"" << std::endl;
+        return BAD_INPUT;
+    }
+    if (std::getline(iss, token))
+    {
+        std::cerr << "Warning: extra input ignored" << std::endl;
+    }
+    return 0;
 }
 
-
-// float find_btc_price(const std::string& date, const std::map<std::string, float>& btc)
-// {
-//     // std::map<std::string, float>::const_iterator it;
-//     // for (it = btc.begin(); it != btc.end(); it++)
-//     // {
-//     //     std::cout << it->first << "|" << date << std::endl;
-//     //     if (strcmp(it->first.c_str(), date.c_str()) == 0)
-//     //     {
-//     //         std::cout << GREEN << "Found date " << date << RESET << std::endl;
-//     //         return (it->second);
-//     //     }
-//     // }
-    
-//     std::cout << "date: " << trim_white(date)  << "size : " << date << std::endl;
-//     std::cout << "otehr size : "  <<  std::string("2012-01-11").size() << std::endl;
-//     std::map<std::string, float>::const_iterator it = btc.find("2012-01-11");
-//     std::cout << "date: " << date << std::endl;
-//     if (it != btc.end())
-//         return (it->second);
-//     // std::cout << "second:" << it->second << std::endl;
-
-//     (void)date;
-//     // std::cout << it->first << "|" << it->second << std::endl;
-//     // std::cout << RED << "Error: could not find date " << date << RESET << std::endl;
-//     return (0);
-// }
-
-float find_btc_price (const std::string& date, const std::map<std::string, float>&btc)
+float find_btc_price(const std::string &date, const std::map<std::string, float> &btc)
 {
     std::map<std::string, float>::const_iterator it = btc.find(date);
 
@@ -106,7 +89,7 @@ float find_btc_price (const std::string& date, const std::map<std::string, float
         --it;
         return (it->second);
     }
-    else 
+    else
     {
         std::map<std::string, float>::const_iterator it2 = it;
         --it2;
@@ -150,9 +133,17 @@ int main(int argc, char **argv)
     {
         std::string date;
         float value;
-        parse_input(line2, date, value);
-        float btc_price = find_btc_price(date, btc_prices);
-        std::cout << date << "=> " << value << " = " << value * btc_price << std::endl;
+        if (parse_input(line2, date, value) == BAD_INPUT)
+            continue;
+        if (value < 0)
+            std::cout << RED << "Error: not a positive number : "<< value << RESET << std::endl;
+        else if (value > 1000000)
+            std::cout << RED << "Error: too big number" << RESET << std::endl;
+        else
+        {
+            float btc_price = find_btc_price(date, btc_prices);
+            std::cout << date << "=> " << value << " = " << value * btc_price << std::endl;
+        }
     }
     input.close();
     return (0);
