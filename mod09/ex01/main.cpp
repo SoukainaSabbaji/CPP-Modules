@@ -4,11 +4,10 @@ int main(int argc, char *argv[])
 {
     if (argc < 2)
     {
-        std::cerr << "Error: no expression provided" << endl;
+        std::cout << RED << "Error: no expression provided" << RESET << std::endl;
         return 1;
     }
-
-    stack<int> numbers;
+    std::stack<int> numbers;
     char *token = strtok(argv[1], " ");
     while (token != NULL)
     {
@@ -21,7 +20,7 @@ int main(int argc, char *argv[])
         {
             if (numbers.size() < 2)
             {
-                std::cerr << "Error: insufficient operands for operator " << token << endl;
+                std::cout << RED << "Error: insufficient operands for operator " << token << RESET<< std::endl;
                 return 1;
             }
             int op2 = numbers.top();
@@ -42,13 +41,13 @@ int main(int argc, char *argv[])
             case '/':
                 if (op2 == 0)
                 {
-                    std::cerr << "Error: division by zero" << endl;
+                    std::cout << RED << "Error: division by zero" << RESET << std::endl;
                     return 1;
                 }
                 numbers.push(op1 / op2);
                 break;
             default:
-                cerr << "Error: invalid operator " << token << endl;
+                std::cout << "Error: invalid operator " << token << RESET << std::endl;
                 return 1;
             }
         }
@@ -57,11 +56,11 @@ int main(int argc, char *argv[])
 
     if (numbers.size() != 1)
     {
-        std::cerr << "Error: too many operands" << endl;
+        std::cout << RED << "Error: too many operands" << RESET << std::endl;
         return 1;
     }
 
-    std::cout << numbers.top() << endl;
+    std::cout << numbers.top() << std::endl;
 
     return 0;
 }
