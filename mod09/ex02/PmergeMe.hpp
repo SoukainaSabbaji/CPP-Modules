@@ -4,8 +4,8 @@
 #include <iostream>
 #include <vector>
 #include <list>
-#include <algorithm>
 #include <ctime>
+#include <sys/time.h>
 
 #define RED "\x1b[31m"
 #define GREEN "\x1b[32m"
