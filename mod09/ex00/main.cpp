@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:24:41 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/03/24 13:00:03 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/27 12:56:23 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ void parse_btc(std::string &line, std::map<std::string, float> &btc)
     std::string date, price;
     std::stringstream ss(line);
     std::getline(ss, date, ',');
-    std::getline(ss, price, ',');
+    std::getline(ss >> std::ws , price);
+    
     try
     {
         float price_float = std::atof(trim_white(price).c_str());
@@ -81,24 +82,10 @@ int parse_input(const std::string &input, std::string &date, float &value)
 float find_btc_price(const std::string &date, const std::map<std::string, float> &btc)
 {
     std::map<std::string, float>::const_iterator it = btc.find(date);
-
-    if (it == btc.begin())
+    if (it != btc.end())
         return (it->second);
-    else if (it == btc.end())
-    {
-        --it;
-        return (it->second);
-    }
-    else
-    {
-        std::map<std::string, float>::const_iterator it2 = it;
-        --it2;
-        if (it->first == date)
-            return (it->second);
-        else if (it2->first == date)
-            return (it2->second);
-    }
-    return (0);
+    std::cout << "Error: no Bitcoin price found for date :" << date << std::endl;
+    return (9999999999);
 }
 
 int main(int argc, char **argv)
@@ -135,13 +122,15 @@ int main(int argc, char **argv)
         float value;
         if (parse_input(line2, date, value) == BAD_INPUT)
             continue;
-        if (value < 0)
-            std::cout << RED << "Error: not a positive number : "<< value << RESET << std::endl;
+        if (value <= 0)
+            std::cout << RED << "Error: not a valid value : "<< value << RESET << std::endl;
         else if (value > 1000000)
             std::cout << RED << "Error: too big number" << RESET << std::endl;
         else
         {
             float btc_price = find_btc_price(date, btc_prices);
+            if (btc_price == NO_PRICE)
+                continue;
             std::cout << date << "=> " << value << " = " << value * btc_price << std::endl;
         }
     }

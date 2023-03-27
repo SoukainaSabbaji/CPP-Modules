@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:26:12 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/03/24 13:00:14 by marvin           ###   ########.fr       */
+/*   Updated: 2023/03/27 12:38:42 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@
 #define RESET "\x1b[0m"
 
 #define BAD_INPUT 66
+#define NO_PRICE 9999999999
 
 #endif
