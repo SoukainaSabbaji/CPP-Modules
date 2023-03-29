@@ -4,6 +4,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <algorithm>
 #include <ctime>
 #include <sys/time.h>
 
