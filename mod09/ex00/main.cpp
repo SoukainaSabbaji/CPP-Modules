@@ -6,7 +6,7 @@
 /*   By: ssabbaji <ssabbaji@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/21 13:24:41 by ssabbaji          #+#    #+#             */
-/*   Updated: 2023/03/27 12:56:23 by ssabbaji         ###   ########.fr       */
+/*   Updated: 2023/03/29 14:09:42 by ssabbaji         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,16 @@ float find_btc_price(const std::string &date, const std::map<std::string, float>
     std::map<std::string, float>::const_iterator it = btc.find(date);
     if (it != btc.end())
         return (it->second);
-    std::cout << "Error: no Bitcoin price found for date :" << date << std::endl;
-    return (9999999999);
+    std::map<std::string, float>::const_iterator it2 = btc.lower_bound(date);
+    if (it2 == btc.end())
+        return (--it2)->second;
+    if (it2 == btc.begin())
+        return it2->second;
+    std::map<std::string, float>::const_iterator it3 = it2;
+    it3--;
+    if (date.compare(it2->first) - date.compare(it3->first) < 0)
+        return it2->second;
+    return it3->second;
 }
 
 int main(int argc, char **argv)
@@ -95,7 +103,7 @@ int main(int argc, char **argv)
         std::cout << RED << "Error usage : ./btc [filename] " << RESET << std::endl;
         return (1);
     }
-    std::ifstream file("data.csv");
+    std::ifstream file("data2.csv");
     if (!file.is_open())
     {
         std::cout << RED << "Error: could not open CSV file" << RESET << std::endl;
@@ -129,8 +137,6 @@ int main(int argc, char **argv)
         else
         {
             float btc_price = find_btc_price(date, btc_prices);
-            if (btc_price == NO_PRICE)
-                continue;
             std::cout << date << "=> " << value << " = " << value * btc_price << std::endl;
         }
     }
